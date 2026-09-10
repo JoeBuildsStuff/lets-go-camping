@@ -1,3 +1,4 @@
+@import "leaflet/dist/leaflet.css";
 @import "tailwindcss";
 @import "./typeset.css";
 @import "tw-animate-css";
@@ -129,7 +130,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
   body {
     @apply bg-background text-foreground;
     }
@@ -140,4 +141,37 @@
     @apply font-sans;
     --font-sans: var(--font-inter);
     }
+}
+
+/* Leaflet map: keep panes below shadcn overlays (sheet/dialog use z-50) */
+.leaflet-container {
+  z-index: 0;
+  font: inherit;
+}
+
+/* Custom region pins rendered via L.divIcon in components/campsite-map.tsx */
+.campsite-pin-wrap {
+  background: transparent;
+  border: none;
+}
+
+.campsite-pin {
+  display: block;
+  border-radius: 9999px;
+  background-color: var(--pin-color, #16a34a);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.45);
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.campsite-pin:hover {
+  transform: scale(1.15);
+}
+
+.campsite-pin-selected {
+  box-shadow:
+    0 0 0 3px rgb(255 255 255 / 0.9),
+    0 0 0 6px var(--pin-color, #16a34a),
+    0 1px 5px rgb(0 0 0 / 0.45);
 }
