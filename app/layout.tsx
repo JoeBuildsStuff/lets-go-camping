@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Bay Area Campsite Finder — Let's Go Camping",
+  description:
+    "Find tent, RV, cabin, and group campsites around the Bay Area. Filter by region, compare amenities, and jump straight to booking.",
+};
 
 const inter = Inter({
   subsets: ["latin"],
